@@ -10,14 +10,13 @@ string = "race bear thing care keen trap tweet earth knee heart neek tewt"
 
 def get_anagrams(string):
     words_list = string.split()
-    output = {}
+    output = {word: [] for word in words_list}
+        
     for word in words_list:
         for figure in words_list:
                 if sorted(word) == sorted(figure) and len(word) == len(figure) and word != figure:
-                        output[word] = [figure]
-        if word not in output.keys():
-            output[word] = []
-        if [word] in list(output.values()):
+                        output[word].append(figure)
+        if [word] in list(output.values()): 
             del output[word]  
     return output
 
