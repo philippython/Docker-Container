@@ -16,7 +16,13 @@ def min_hr_mon_validator(index, cron):
         elif index == 1 :
             if int(cron.split()[index]) > 23 : return "Invalid hour"
         elif index == 2 :
-            if int(cron.split()[index]) > 31 and int(cron.split()[3]) != 4 : return "Invalid minute"
+            if int(cron.split()[index]) > 31:
+                return "Invalid Day of the month"
+            elif int(cron.split()[3]) == 4 and int(cron.split()[index]) > 29:
+                return "Invalid Day of the month"
+        elif index == 3:
+            if int(cron.split()[index]) > 12 : return "Invalid Month"
+
 
 
 
@@ -31,11 +37,7 @@ def cron_expressor(cron):
     if len(cron.split()) != 5 : return "Invalid cron expression"  
 
     #  checks for invalid minute
-    try :
-        int(cron.split()[0])
-    except ValueError:
-        pass
-    else:
-        if int(cron.split()[0]) > 59 : return "Invalid minute"
+    for i in range(0, len(cron.split())):
+        print(min_hr_mon_validator(int(i), cron))
 
-print(cron_expressor('60 * * * *'))
+print(cron_expressor('24 5 31 7 *'))
