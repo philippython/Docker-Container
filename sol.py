@@ -16,8 +16,9 @@ def get_anagrams(string):
         for figure in words_list:
                 if sorted(word) == sorted(figure) and len(word) == len(figure) and word != figure:
                         output[word].append(figure)
-        if [word] in list(output.values()): 
-            del output[word]  
+        for anagram in list(output.values()): 
+            if word in anagram:
+               del output[word]  
     return output
 
 
