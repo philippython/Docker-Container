@@ -1,5 +1,6 @@
 from array import array
 
-vista = array('i', [1, 2,"type"])
+vista = array('u', ["type", "f*ck"])
 
 print(vista)
+
