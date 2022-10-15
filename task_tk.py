@@ -4,6 +4,7 @@ from tkinter import *
 window = Tk()
 window.title("Calculator")
 window.minsize(width=200, height=200)
+window.config(padx=20, pady=20)
 
 
 # total sum label 
