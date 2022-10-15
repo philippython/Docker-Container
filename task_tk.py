@@ -33,9 +33,10 @@ def substract_input():
     #  the code below gets the current total and substracts the input to it
     current_total = int(output["text"])
     current_total -= int(input.get())
-    output["text"] = current_total
+    output.config(text=current_total)
 
-def reset
+def reset():
+        output.config(text=0)
 
 # creating add button widget
 add = Button(text="+", command=add_input)
