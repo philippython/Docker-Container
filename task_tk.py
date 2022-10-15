@@ -8,7 +8,11 @@ window.minsize(width=200, height=200)
 # total sum label 
 # using the grid function for goementry
 total = tkinter.Label(text="Total: ", font=("Arial", 12 , "bold"))
-total.grid(column=1, row=1)
+total.grid(column=0, row=0)
+
+# creating calculator entry
+input = tkinter.Entry()
+total.grid(column=0, row=1)
 
 
 # the code below keeps the window open
