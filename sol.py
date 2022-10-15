@@ -19,6 +19,5 @@ def get_anagrams(string):
             if word in anagram : del output[word] 
     return output
 
-
     
 print(get_anagrams(string))
