@@ -39,16 +39,16 @@ def reset():
         output.config(text=0)
 
 # creating add button widget
-add = Button(text="+", command=add_input)
-add.grid(column=0, row=2)
+add_btn = Button(text="+", command=add_input)
+add_btn.grid(column=0, row=2)
 
 # creating substract button widget
-add = Button(text="-", command=substract_input)
-add.grid(column=1, row=2)
+substract_btn = Button(text="-", command=substract_input)
+substract_btn.grid(column=1, row=2)
 
 # creating reset button
-add = Button(text="-", command=substract_input)
-add.grid(column=1, row=2)
+reset_btn = Button(text="Reset", command=reset)
+reset_btn.grid(column=2, row=2)
 
 # the code below keeps the window open
 window.mainloop()
