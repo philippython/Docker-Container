@@ -3,18 +3,17 @@ from tkinter import *
 # creating Tk window object
 window = Tk()
 window.title("Calculator")
-window.minsize(width=200, height=200)
-window.config(padx=20, pady=20)
+window.minsize(width=300, height=300)
 
 
 # total sum label 
 # using the grid function for goementry
 total_label = Label(text="Total: ", font=("Arial", 12 , "bold"))
-total_label.pack(side="left")
+total_label.grid(column=0, row=0)
 
 #  created the calculator output label widget
 output = Label(text="0", font=("Arial", 12 , "bold"))
-output.pack(side="right")
+output.grid(column=1, row=0)
 
 
 # creating calculator entry widget
@@ -45,7 +44,7 @@ add_btn.grid(column=0, row=2)
 
 # creating substract button widget
 substract_btn = Button(text="-", command=substract_input)
-substract_btn.grid(column=1, row=2)
+substract_btn.grid(column=1, row=2, padx=10)
 
 # creating reset button
 reset_btn = Button(text="Reset", command=reset)
