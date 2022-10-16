@@ -10,11 +10,11 @@ window.config(padx=20, pady=20)
 # total sum label 
 # using the grid function for goementry
 total_label = Label(text="Total: ", font=("Arial", 12 , "bold"))
-total_label.grid(column=0, row=0)
+total_label.pack(side="left")
 
 #  created the calculator output label widget
 output = Label(text="0", font=("Arial", 12 , "bold"))
-output.grid(column=1, row=0)
+output.pack(side="right")
 
 
 # creating calculator entry widget
