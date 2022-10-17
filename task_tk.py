@@ -9,54 +9,58 @@ class Calculator():
 
         
         # creating Tk window object
-        window = Tk()
-        window.title("Calculator")
-        window.minsize(width=300, height=300)
+        self.window = Tk()
+        self.window.title("Calculator")
+        self.window.minsize(width=300, height=300)
 
 
         # total sum label 
         # using the grid function for goementry
-        total_label = Label(text="Total: ", font=("Arial", 12 , "bold"))
-        total_label.grid(column=0, row=0)
+        self.total_label = Label(text="Total: ", font=("Arial", 12 , "bold"))
+        self.total_label.grid(column=0, row=0)
 
         #  created the calculator output label widget
-        output = Label(text="0", font=("Arial", 12 , "bold"))
-        output.grid(column=1, row=0)
+        self.output = Label(text="0", font=("Arial", 12 , "bold"))
+        self.output.grid(column=1, row=0)
 
 
         # creating calculator entry widget
-        input = Entry()
-        input.grid(column=0, row=1)
+        self.input = Entry()
+        self.input.grid(column=0, row=1)
 
         # creating add button widget
-        add_btn = Button(text="+", command=add_input)
-        add_btn.grid(column=0, row=2)
+        self.add_btn = Button(text="+", command=self.add_input)
+        self.add_btn.grid(column=0, row=2)
 
         # creating substract button widget
-        substract_btn = Button(text="-", command=substract_input)
-        substract_btn.grid(column=1, row=2, padx=10)
+        self.substract_btn = Button(text="-", command=self.substract_input)
+        self.substract_btn.grid(column=1, row=2, padx=10)
 
         # creating reset button
-        reset_btn = Button(text="Reset", command=reset)
-        reset_btn.grid(column=2, row=2)
+        self.reset_btn = Button(text="Reset", command=self.reset)
+        self.reset_btn.grid(column=2, row=2)
 
-        # the code below keeps the window open
-        window.mainloop()
+        # the code below keeps the self.window open
+        self.window.mainloop()
 
     #  function handling addition
-    def add_input():
+    def add_input(self):
         #  the code below gets the current total and adds the input to it
-        current_total = int(output["text"])
-        current_total += int(input.get())
-        output["text"] = current_total
+        current_total = int(self.output["text"])
+        current_total += int(self.input.get())
+        self.output["text"] = current_total
 
 
     #  function handling substraction
-    def substract_input():
+    def substract_input(self):
         #  the code below gets the current total and substracts the input to it
-        current_total = int(output["text"])
-        current_total -= int(input.get())
-        output.config(text=current_total)
+        current_total = int(self.output["text"])
+        current_total -= int(self.input.get())
+        self.output.config(text=current_total)
 
-    def reset():
-            output.config(text=0)
+    def reset(self):
+        self.output.config(text=0)
+
+
+# creating the calculator object
+calculator = Calculator()
