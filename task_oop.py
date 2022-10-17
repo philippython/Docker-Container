@@ -68,6 +68,38 @@ hiphop_playlist.add_song(sungba)
 hiphop_playlist.add_song(dull)
 hiphop_playlist.add_song(Me_vs_me)
 
+# checking songs by artist
 asake.all_songs()
 nle_choppa.all_songs()
 hiphop_playlist.display()
+
+
+
+
+"""
+ Inheritance Solution below
+"""
+
+class Person:
+    def __init__(self, name, phone_number):
+        self.name = name
+        self.phone_number = phone_number
+
+    def get_profile_info(self):
+        return "Name: %s, Phone number: %s" %(self.name, self.phone_number)
+
+# Creating a Lecturer that inherits from Person class
+class Lecturer(Person):
+
+    def __init__(self, name, phone_number, academic_title, salary):
+        self.academic_title = academic_title
+        self.salary = salary
+        super().__init__(name, phone_number)
+
+    #  overriding the get_profile_info method from the parent class
+    def get_profile_info(self):
+        return "Name: %s, Phone number: %s, Academic title: %s, Salary: %s " %(self.name, self.phone_number, self.academic_title ,self.salary)
+
+# creating a Lecturer object
+soyinka = Lecturer("Wole Soyinka", "09045366254", "Doctor", 5_000_000)
+print(soyinka.get_profile_info())
