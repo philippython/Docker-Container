@@ -19,8 +19,12 @@ class BMI:
 
 # testing BMI class
 def main():
-bmi = BMI()
-bmi.set_height(6.2)
-bmi.set_weight(50)
-bmi.calc_bmi()
-print(bmi.get_bmi())
+    bmi = BMI()
+    height = float(input("What is your height? "))
+    weight = float(input("What is your weight? "))
+    bmi.set_height(height)
+    bmi.set_weight(weight)
+    bmi.calc_bmi()
+    print(bmi.get_bmi())
+
+main( )
