@@ -17,3 +17,10 @@ class BMI:
     def get_bmi(self):
         return self.__bmi
 
+# testing BMI class
+def main():
+bmi = BMI()
+bmi.set_height(6.2)
+bmi.set_weight(50)
+bmi.calc_bmi()
+print(bmi.get_bmi())
