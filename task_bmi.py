@@ -27,4 +27,7 @@ def main():
     bmi.calc_bmi()
     print(bmi.get_bmi())
 
-main( )
+main()
+
+# 3. Testing of OOP programmes
+
