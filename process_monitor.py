@@ -27,6 +27,8 @@ def processor():
     if len(processor_list) == 1: 
         print('CPU usage (GB) in %:', cpu_usage[0])
         print("We have %s processes running................." % (processor_list[0]))
+        print('='*30, "Processing", '='*30)
+
     
     if len(processor_list) > 1:
         difference_in_processes = abs(processor_list[-1] - processor_list[-2])
@@ -35,8 +37,9 @@ def processor():
         
         #  checks if the change in ram usage is above 10% the previous
         if diff_in_cpu_usage > prev_ten_percent_usage:
-            for process in wmi_object.Win32_Process():
 
+            for process in wmi_object.Win32_Process():
+                processes_above_one_percent = []
                 try:
                     p = psutil.Process(process.ProcessId)
                 except psutil.NoSuchProcess:
@@ -44,20 +47,26 @@ def processor():
                 else:
                     each_process_usage = p.cpu_percent()
                     if each_process_usage > 1 :
+                        processes_above_one_percent.append(process)
                         print(f"Process {process} is using more than 1 % of CPU ")
-                
+            if not processes_above_one_percent:
+                print(f"No Process is using more than 1 % of CPU ")
+
 
         if processor_list[-1] > processor_list[-2] :
             print('CPU usage (GB) in %:', cpu_usage[-1])
             print("We have %s more processes than 20 seconds earlier........." % (difference_in_processes))
-        
+            print('='*30, "Processing", '='*30)
+
         elif processor_list[-1] == processor_list[-2] :
             print('CPU usage (GB) in %:', cpu_usage[-1])
-            print("We have no new processes than 20 seconds earlier............")
+            print("We have no new processes than 20 seconds earlier..........")
+            print('='*30, "Processing", '='*30)
 
         else:
             print('CPU usage (GB) in %:', cpu_usage[-1])
-            print("We have %s less processes than 20 seconds earlier..........." % (difference_in_processes))
+            print("We have %s less processes than 20 seconds earlier........." % (difference_in_processes))
+            print('='*30, "Processing", '='*30)
 
     time.sleep(20)
 
