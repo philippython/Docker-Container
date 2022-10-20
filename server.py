@@ -25,8 +25,6 @@ while(True):
         messages += 1
     
     def number_filterer(char):
-        if char == '0':
-            return 0
         try:
             int(char)
         except ValueError:
@@ -35,11 +33,12 @@ while(True):
             return int(char)
         
     print(f"Server has received {messages} messages.")
-    decoded_msg = bytes.decode(message, 'utf-8')
+    decoded_msg = str(bytes.decode(message, 'utf-8'))
     clientMsg = "Message from Client: {}".format(decoded_msg)
     filtered_numbers = filter(number_filterer, decoded_msg)
+    # list of all numbers in the client message
     numbers = list(filtered_numbers)
-    print(numbers)
+    
 
     print(f"The Client message is {len(decoded_msg)} long.")
     print(f"Client message contains {len(numbers)} numbers")
