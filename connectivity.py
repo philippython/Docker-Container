@@ -9,7 +9,7 @@ Using the requests module
 """
 from requests import *
 
-website_list = ["https://exajlmple.com/", "https://90kfakbook.com/", "https://amazon.com/"]
+website_list = ["https://github.com/", "https://stackoverflow.com/", "https://amazon.com/"]
 
 # use the list below to test for invalid websites
 # ["https://exajlmple.com/", "https://90kfakbook.com/", "https://amazon.com/"]
@@ -32,25 +32,24 @@ def requester(url):
 success_response = [requester(url) for url in website_list if requester(url) == 200]
 error_response =  [url for url in website_list if requester(url) != 200]
 
-print(success_response)
-
 # return connectivity information
 # if success_response == len(website_list):
 #     print("This computer is connected to the internet")
 
-if error_response == len(website_list):
+if len(error_response) == len(website_list):
     print('This computer is completely offline and not connected to the internet')
+
+elif len(success_response) == len(website_list):
+    print('This computer is actively connected to the internet')
 
 else:
     retry_one = [url for url in error_response if requester(url) != 200]
-
     # checks if we still get an invalid connection 
     if not retry_one:
         print("This computer is now connected to the internet")
     else:
         retry_two = [url for url in retry_one if requester(url) != 200]
-        
-        if not retry_two:
+        if retry_two:
             print('='*20, 'THE WEBSITE BELOW ARE PROBABLY OFFLINE', '='*20)
             for website in retry_two:
                 print(website)
