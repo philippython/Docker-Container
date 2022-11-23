@@ -1,4 +1,4 @@
-How do I minimize this code and also make the program to start afresh Incase if user wants to make a new order?
+"""How do I minimize this code and also make the program to start afresh Incase if user wants to make a new order?"""
 
 #START KITE IMPORT
 import json

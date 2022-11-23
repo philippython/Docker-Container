@@ -41,7 +41,7 @@ name : Get name and version of Operating system \n --busy : check if Computer is
     elif task == "--ram usg":
 
         #  the code below gets the amount of RAM usage currently being used
-        # Getting usage of virtual_memory in GB ( 4th field)
+        # Getting usage of virtual_memory in GB (4th field)
         print('RAM Used (GB):', round(psutil.virtual_memory()[3]/1000000000, 2))
         main()
 
