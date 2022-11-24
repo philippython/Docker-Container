@@ -16,7 +16,13 @@ def send_update(status, json):
     with SMTP(SMTP_HOST) as connection:
         connection.starttls()
         connection.login(user=MAIL_SENDER, password=MAIL_SENDER_PASSWORD)
-        connection.sendmail(from_addr=MAIL_SENDER, to_addrs=MAIL_SENDER, subject=f"Post Request Update:{status}", msg=json)
+
+        # previous code no parameter in sendmail called subject
+        # connection.sendmail(from_addr=MAIL_SENDER, to_addrs=MAIL_SENDER, subject=f"Post Request Update:{status}", msg=json)
+
+        connection.sendmail(from_addr=MAIL_SENDER,
+                            to_addrs=MAIL_SENDER, 
+                            msg=f"Subject:Post Request Update:{status}\n\n{json}")
 
 data = {
         "firstname": "tunji",
