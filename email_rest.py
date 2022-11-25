@@ -7,13 +7,17 @@ API_ENDPOINT = 'https://user-mangement-api.herokuapp.com/'
 SMTP_HOST = "smtp.gmail.com"
 MAIL_SENDER = "odulajaphilip@gmail.com"
 MAIL_SENDER_PASSWORD="kyvycjacqhjasctx"
+HEADERS = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)\
+            AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75\
+            Safari/537.36'
+           }
 # MAIL_SENDER = os.getenv("SENDER_EMAIL")
 # MAIL_SENDER_PASSWORD = os.getenv("GOOGLE_APP_PASSWORD")
 print("running")
 
 # setting up mail configuration
 def send_update(status, json):
-    with SMTP(SMTP_HOST) as connection:
+    with SMTP(SMTP_HOST, port=465) as connection:
         connection.starttls()
         connection.login(user=MAIL_SENDER, password=MAIL_SENDER_PASSWORD)
 
