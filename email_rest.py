@@ -26,7 +26,7 @@ def send_update(status, json):
     mail.set_content(json)
 
     context = ssl.create_default_context()
-    with SMTP_SSL(SMTP_HOST, port=465, context=context) as connection:
+    with SMTP_SSL(SMTP_HOST, port=587, context=context) as connection:
         connection.starttls()
         connection.login(user=MAIL_SENDER, password=MAIL_SENDER_PASSWORD)
 
@@ -44,7 +44,6 @@ data = {
 }
 
 add_user_request = requests.post(url=f'{API_ENDPOINT}/add_user', data=data)
-print(add_user_request.json())
 if add_user_request.status_code == 200:
     print(add_user_request.json())
     send_update("Successful", add_user_request.json())
