@@ -3,6 +3,7 @@ from email.message import EmailMessage
 from dotenv import load_dotenv
 import ssl
 import requests
+import json
 import os
 
 # the load_dotenv function takes in dotenv_path parameter which is the .env file location
@@ -20,14 +21,13 @@ HEADERS = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)\
 
 
 # Function below sends mail and request update using ssl and smtp
-def send_update(status, json):
+def send_update(status, response):
     mail = EmailMessage()
     mail.to, mail.subject , mail['from'] = MAIL_SENDER, f"Subject:Post Request Update:{status}" , MAIL_SENDER
-    mail.set_content(json)
+    mail.set_content(json.dumps(response))
 
     context = ssl.create_default_context()
-    with SMTP_SSL(SMTP_HOST, port=587, context=context) as connection:
-        connection.starttls()
+    with SMTP_SSL(SMTP_HOST, port=465, context=context) as connection:
         connection.login(user=MAIL_SENDER, password=MAIL_SENDER_PASSWORD)
 
         connection.sendmail(from_addr=MAIL_SENDER,
@@ -51,7 +51,7 @@ else:
     send_update("Failed", add_user_request.json())
     
 
-# 200 succus
+# 200 success
 # 400 bad request 
 # 404 not found
 # 500 the server is having issues
