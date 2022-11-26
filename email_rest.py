@@ -5,6 +5,7 @@ import ssl
 import requests
 import os
 
+# the load_dotenv function takes in dotenv_path parameter which is the .env file location
 load_dotenv(dotenv_path=".env")
 
 API_ENDPOINT = 'https://user-mangement-api.herokuapp.com/'
