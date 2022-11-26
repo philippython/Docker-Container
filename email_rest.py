@@ -23,16 +23,17 @@ HEADERS = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)\
 # Function below sends mail and request update using ssl and smtp
 def send_update(status, response):
     mail = EmailMessage()
-    mail.to, mail.subject , mail['from'] = MAIL_SENDER, f"Subject:Post Request Update:{status}" , MAIL_SENDER
+    mail.to, mail['from'] = MAIL_SENDER , MAIL_SENDER
     mail.set_content(json.dumps(response))
 
     context = ssl.create_default_context()
+    # change port number from 587 to 465 
     with SMTP_SSL(SMTP_HOST, port=465, context=context) as connection:
         connection.login(user=MAIL_SENDER, password=MAIL_SENDER_PASSWORD)
 
         connection.sendmail(from_addr=MAIL_SENDER,
                             to_addrs=MAIL_SENDER, 
-                            msg=mail.as_string())
+                            msg= f"Subject:Post Request Update:{status}\n\n{mail.as_string()}")
 
 data = {
         "firstname": "tunji",
@@ -50,6 +51,7 @@ if add_user_request.status_code == 200:
 else:
     send_update("Failed", add_user_request.json())
     
+# Make request to every other endpoint
 
 # 200 success
 # 400 bad request 
