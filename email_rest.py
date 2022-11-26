@@ -1,24 +1,22 @@
 from smtplib import SMTP_SSL
 from email.message import EmailMessage
-# from dotenv import load_env
+from dotenv import load_dotenv
 import ssl
 import requests
 import os
 
-# load_env()
+load_dotenv(dotenv_path=".env")
 
 API_ENDPOINT = 'https://user-mangement-api.herokuapp.com/'
 SMTP_HOST = "smtp.gmail.com"
-MAIL_SENDER = "odulajaphilip@gmail.com"
-MAIL_SENDER_PASSWORD="kyvycjacqhjasctx"
+MAIL_SENDER = os.getenv("SENDER_EMAIL")
+MAIL_SENDER_PASSWORD = os.getenv("GOOGLE_APP_PASSWORD")
 HEADERS = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)\
             AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75\
             Safari/537.36'
            }
 
-# MAIL_SENDER = os.getenv("SENDER_EMAIL")
-# MAIL_SENDER_PASSWORD = os.getenv("GOOGLE_APP_PASSWORD")
-print("running")
+
 
 # Function below sends mail and request update using ssl and smtp
 def send_update(status, json):
